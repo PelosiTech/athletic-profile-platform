@@ -72,7 +72,7 @@ function StatBar({ label, value, max, unit }: { label: string; value: number; ma
       </div>
       <div className="h-2 overflow-hidden rounded-full bg-secondary">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-primary to-blue-400 transition-all duration-700"
+          className="h-full rounded-full bg-gradient-to-r from-primary to-emerald-400 transition-all duration-700"
           style={{ width: `${pct}%` }}
         />
       </div>

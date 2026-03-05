@@ -41,6 +41,7 @@ export interface Athlete {
   };
   profileImage: string;
   bannerGradient: string;
+  photo?: string;
 }
 
 export const athletes: Athlete[] = [
@@ -90,7 +91,8 @@ export const athletes: Athlete[] = [
       hudl: "hudl.com/profile/marcus-thompson",
     },
     profileImage: "/athletes/marcus.jpg",
-    bannerGradient: "from-blue-900 via-blue-800 to-slate-900",
+    photo: "/images/athlete-1.jpg",
+    bannerGradient: "from-emerald-900 via-blue-800 to-slate-900",
   },
   {
     id: "jasmine-carter",

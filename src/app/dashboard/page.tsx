@@ -32,13 +32,13 @@ const actions = [
     icon: User,
     title: "Edit Profile",
     desc: "Update your bio, photos, and personal info",
-    color: "from-blue-500/20 to-blue-600/10",
+    color: "from-emerald-500/20 to-emerald-600/10",
   },
   {
     icon: Dumbbell,
     title: "Update Metrics",
     desc: "Add new testing results and PRs",
-    color: "from-orange-500/20 to-orange-600/10",
+    color: "from-amber-500/20 to-amber-600/10",
   },
   {
     icon: Upload,
@@ -105,7 +105,7 @@ export default function Dashboard() {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <TrendingUp className="h-5 w-5 text-muted-foreground" />
-              <Badge variant="secondary" className="text-xs text-blue-400">Top 15%</Badge>
+              <Badge variant="secondary" className="text-xs text-emerald-400">Top 15%</Badge>
             </div>
             <p className="mt-2 text-3xl font-bold">42</p>
             <p className="text-xs text-muted-foreground">Coach Interactions</p>

@@ -88,17 +88,16 @@ export default function AthletesDirectory() {
         {filtered.map((a) => (
           <Link key={a.id} href={`/athletes/${a.id}`}>
             <Card className="group h-full border-border/40 bg-card/60 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 cursor-pointer">
-              {/* Banner */}
-              <div className={`h-28 rounded-t-lg bg-gradient-to-r ${a.bannerGradient} relative`}>
-                <div className="absolute -bottom-8 left-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-xl border-2 border-card bg-gradient-to-br from-primary/30 to-primary/10 shadow-lg">
-                    <span className="text-lg font-bold text-primary">
-                      {a.name.split(" ").map((n) => n[0]).join("")}
-                    </span>
-                  </div>
-                </div>
+              {/* Photo */}
+              <div className="h-40 overflow-hidden rounded-t-lg relative">
+                <img
+                  src={a.photo || `/images/athlete-${(filtered.indexOf(a) % 4) + 1}.jpg`}
+                  alt={a.name}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent" />
               </div>
-              <CardContent className="pt-12 pb-4 px-4">
+              <CardContent className="pt-4 pb-4 px-4">
                 <h3 className="font-semibold group-hover:text-primary transition-colors">{a.name}</h3>
                 <div className="mt-1 flex items-center gap-1 text-xs text-muted-foreground">
                   <MapPin className="h-3 w-3" />

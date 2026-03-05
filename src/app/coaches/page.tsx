@@ -55,7 +55,7 @@ export default function Coaches() {
     <div>
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border/40">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-950/30 via-background to-background" />
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-950/30 via-background to-background" />
         <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="secondary" className="mb-6 px-4 py-1.5">
@@ -63,7 +63,7 @@ export default function Coaches() {
             </Badge>
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
               Discover Your Next{" "}
-              <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
                 Impact Player
               </span>
             </h1>
