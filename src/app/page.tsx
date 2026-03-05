@@ -28,37 +28,37 @@ const featuredAthletes = [
     slug: "marcus-thompson",
   },
   {
-    name: "Sophia Rivera",
+    name: "Jasmine Carter",
     school: "Ridgeline Academy",
     sport: "Basketball",
     position: "Point Guard",
     grade: "Senior",
-    fortyYard: "4.71s",
+    fortyYard: "4.95s",
     gpa: "3.9",
     photo: "/images/athlete-2.jpg",
-    slug: "sophia-rivera",
+    slug: "jasmine-carter",
   },
   {
-    name: "Jaylen Carter",
+    name: "Diego Ramirez",
     school: "Ridgeline Academy",
     sport: "Track & Field",
     position: "Sprinter",
     grade: "Junior",
-    fortyYard: "4.38s",
-    gpa: "3.5",
+    fortyYard: "4.41s",
+    gpa: "3.6",
     photo: "/images/athlete-3.jpg",
-    slug: "jaylen-carter",
+    slug: "diego-ramirez",
   },
   {
-    name: "Ava Mitchell",
+    name: "Alyssa Chen",
     school: "Ridgeline Academy",
     sport: "Soccer",
     position: "Midfielder",
     grade: "Sophomore",
-    fortyYard: "4.65s",
+    fortyYard: "4.72s",
     gpa: "4.0",
     photo: "/images/athlete-4.jpg",
-    slug: "ava-mitchell",
+    slug: "alyssa-chen",
   },
 ];
 
@@ -143,7 +143,7 @@ export default function Home() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {featuredAthletes.map((a) => (
             <Card key={a.name} className="group overflow-hidden border-border/40 bg-card/60 transition-all hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/5">
-              <div className="relative h-56 overflow-hidden">
+              <div className="relative h-72 overflow-hidden">
                 <img
                   src={a.photo}
                   alt={a.name}

@@ -115,10 +115,10 @@ export default function AthleteProfile() {
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Profile header */}
-        <div className="-mt-28 relative z-10 sm:-mt-32">
+        <div className="-mt-36 relative z-10 sm:-mt-44">
           <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-end">
             {/* Avatar */}
-            <div className="h-44 w-44 overflow-hidden rounded-2xl border-4 border-background shadow-xl sm:h-52 sm:w-52">
+            <div className="h-56 w-44 overflow-hidden rounded-2xl border-4 border-background shadow-xl sm:h-72 sm:w-56">
               {athlete.photo ? (
                 <img src={athlete.photo} alt={athlete.name} className="h-full w-full object-cover" />
               ) : (
