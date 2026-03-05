@@ -108,20 +108,26 @@ export default function AthleteProfile() {
   return (
     <div className="pb-20">
       {/* Hero Banner */}
-      <div className={`relative h-64 bg-gradient-to-r ${athlete.bannerGradient} sm:h-80`}>
+      <div className={`relative h-72 bg-gradient-to-r ${athlete.bannerGradient} sm:h-96`}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/60 to-transparent h-32" />
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/60 to-transparent h-40" />
       </div>
 
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Profile header */}
-        <div className="-mt-20 relative z-10">
+        <div className="-mt-28 relative z-10 sm:-mt-32">
           <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-end">
             {/* Avatar */}
-            <div className="flex h-32 w-32 items-center justify-center rounded-2xl border-4 border-background bg-gradient-to-br from-primary/30 to-primary/10 shadow-xl sm:h-36 sm:w-36">
-              <span className="text-4xl font-bold text-primary">
-                {athlete.name.split(" ").map((n) => n[0]).join("")}
-              </span>
+            <div className="h-44 w-44 overflow-hidden rounded-2xl border-4 border-background shadow-xl sm:h-52 sm:w-52">
+              {athlete.photo ? (
+                <img src={athlete.photo} alt={athlete.name} className="h-full w-full object-cover" />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary/30 to-primary/10">
+                  <span className="text-5xl font-bold text-primary">
+                    {athlete.name.split(" ").map((n: string) => n[0]).join("")}
+                  </span>
+                </div>
+              )}
             </div>
 
             <div className="flex-1">

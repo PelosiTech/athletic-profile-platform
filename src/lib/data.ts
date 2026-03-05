@@ -137,6 +137,7 @@ export const athletes: Athlete[] = [
       phone: "(480) 555-0293",
     },
     profileImage: "/athletes/jasmine.jpg",
+    photo: "/images/athlete-2.jpg",
     bannerGradient: "from-purple-900 via-purple-800 to-slate-900",
   },
   {
@@ -173,6 +174,7 @@ export const athletes: Athlete[] = [
       phone: "(602) 555-0381",
     },
     profileImage: "/athletes/diego.jpg",
+    photo: "/images/athlete-3.jpg",
     bannerGradient: "from-green-900 via-emerald-800 to-slate-900",
   },
   {
@@ -216,6 +218,7 @@ export const athletes: Athlete[] = [
       phone: "(480) 555-0412",
     },
     profileImage: "/athletes/alyssa.jpg",
+    photo: "/images/athlete-4.jpg",
     bannerGradient: "from-rose-900 via-pink-800 to-slate-900",
   },
   {
@@ -260,6 +263,7 @@ export const athletes: Athlete[] = [
       phone: "(602) 555-0578",
     },
     profileImage: "/athletes/jaylen.jpg",
+    photo: "/images/athlete-1.jpg",
     bannerGradient: "from-orange-900 via-amber-800 to-slate-900",
   },
   {
@@ -296,6 +300,7 @@ export const athletes: Athlete[] = [
       phone: "(480) 555-0634",
     },
     profileImage: "/athletes/sophia.jpg",
+    photo: "/images/athlete-3.jpg",
     bannerGradient: "from-teal-900 via-cyan-800 to-slate-900",
   },
   {
@@ -339,6 +344,7 @@ export const athletes: Athlete[] = [
       phone: "(480) 555-0789",
     },
     profileImage: "/athletes/tyler.jpg",
+    photo: "/images/athlete-2.jpg",
     bannerGradient: "from-indigo-900 via-violet-800 to-slate-900",
   },
 ];

@@ -89,7 +89,7 @@ export default function AthletesDirectory() {
           <Link key={a.id} href={`/athletes/${a.id}`}>
             <Card className="group h-full border-border/40 bg-card/60 transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 cursor-pointer">
               {/* Photo */}
-              <div className="h-40 overflow-hidden rounded-t-lg relative">
+              <div className="h-56 overflow-hidden rounded-t-lg relative">
                 <img
                   src={a.photo || `/images/athlete-${(filtered.indexOf(a) % 4) + 1}.jpg`}
                   alt={a.name}
