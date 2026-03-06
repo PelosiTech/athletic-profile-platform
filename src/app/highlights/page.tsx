@@ -37,6 +37,7 @@ const weeklyHighlights = [
       type: "Game of the Week",
       date: "Mar 1, 2026",
       videoUrl: "#",
+      youtubeId: "gc1mfy1UTMA",
     },
   },
   {
@@ -57,6 +58,7 @@ const weeklyHighlights = [
       type: "Performance of the Week",
       date: "Feb 28, 2026",
       videoUrl: "#",
+      youtubeId: "8MIiiOccigg",
     },
   },
   {
@@ -77,6 +79,7 @@ const weeklyHighlights = [
       type: "Record Breaker",
       date: "Mar 3, 2026",
       videoUrl: "#",
+      youtubeId: "TYWP5FtxjZg",
     },
   },
   {
@@ -97,6 +100,7 @@ const weeklyHighlights = [
       type: "Clutch Performance",
       date: "Mar 4, 2026",
       videoUrl: "#",
+      youtubeId: "TeQtvYzw6ig",
     },
   },
   {
@@ -117,6 +121,7 @@ const weeklyHighlights = [
       type: "Defensive Player of the Week",
       date: "Mar 1, 2026",
       videoUrl: "#",
+      youtubeId: "BI1pv6YGpP0",
     },
   },
 ];
@@ -240,10 +245,18 @@ export default function HighlightsPage() {
                     View Full Profile <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Button variant="outline" className="gap-2 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10">
-                  <Play className="h-4 w-4" /> Watch Highlights
-                </Button>
               </div>
+              {athleteOfTheWeek.highlight.youtubeId && (
+                <div className="mt-6 aspect-video overflow-hidden rounded-lg">
+                  <iframe
+                    src={`https://www.youtube.com/embed/${athleteOfTheWeek.highlight.youtubeId}`}
+                    title={athleteOfTheWeek.highlight.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="h-full w-full"
+                  />
+                </div>
+              )}
             </CardContent>
           </div>
         </Card>
@@ -323,6 +336,17 @@ export default function HighlightsPage() {
                       Profile <ChevronRight className="h-4 w-4" />
                     </Link>
                   </div>
+                  {item.highlight.youtubeId && (
+                    <div className="mt-4 aspect-video overflow-hidden rounded-lg">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${item.highlight.youtubeId}`}
+                        title={item.highlight.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="h-full w-full"
+                      />
+                    </div>
+                  )}
                 </CardContent>
               </div>
             </Card>

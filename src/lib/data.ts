@@ -39,6 +39,7 @@ export interface Athlete {
     twitter?: string;
     hudl?: string;
   };
+  highlights: { title: string; youtubeId: string }[];
   profileImage: string;
   bannerGradient: string;
   photo?: string;
@@ -90,6 +91,11 @@ export const athletes: Athlete[] = [
       twitter: "@MarcusT_WR",
       hudl: "hudl.com/profile/marcus-thompson",
     },
+    highlights: [
+      { title: "Junior Season Highlights — WR", youtubeId: "gc1mfy1UTMA" },
+      { title: "Game-Winning TD vs Desert Vista", youtubeId: "4VPfwpCTxco" },
+      { title: "40 Yard Dash & Combine Testing", youtubeId: "Y4SLcx5uzPA" },
+    ],
     profileImage: "/athletes/marcus.jpg",
     photo: "/images/athlete-1.jpg",
     bannerGradient: "from-emerald-900 via-blue-800 to-slate-900",
@@ -136,6 +142,11 @@ export const athletes: Athlete[] = [
       email: "jasmine.c@email.com",
       phone: "(480) 555-0293",
     },
+    highlights: [
+      { title: "Triple-Double in Regional Semifinal", youtubeId: "8MIiiOccigg" },
+      { title: "Senior Season Point Guard Highlights", youtubeId: "Ihb0Q8wod3k" },
+      { title: "Playoff Game — 22 Pts, 11 Ast", youtubeId: "GypW-BlQYdQ" },
+    ],
     profileImage: "/athletes/jasmine.jpg",
     photo: "/images/athlete-2.jpg",
     bannerGradient: "from-purple-900 via-purple-800 to-slate-900",
@@ -173,6 +184,10 @@ export const athletes: Athlete[] = [
       email: "diego.r@email.com",
       phone: "(602) 555-0381",
     },
+    highlights: [
+      { title: "Sophomore Season Soccer Highlights", youtubeId: "TeQtvYzw6ig" },
+      { title: "2 Goals in Regional Championship", youtubeId: "DjJHhNnO6T4" },
+    ],
     profileImage: "/athletes/diego.jpg",
     photo: "/images/athlete-3.jpg",
     bannerGradient: "from-green-900 via-emerald-800 to-slate-900",
@@ -217,6 +232,10 @@ export const athletes: Athlete[] = [
       email: "alyssa.c@email.com",
       phone: "(480) 555-0412",
     },
+    highlights: [
+      { title: "Track & Field — 400m PR Race", youtubeId: "TYWP5FtxjZg" },
+      { title: "Cross Country Season Highlights", youtubeId: "WqYjcfY0HNw" },
+    ],
     profileImage: "/athletes/alyssa.jpg",
     photo: "/images/athlete-4.jpg",
     bannerGradient: "from-rose-900 via-pink-800 to-slate-900",
@@ -262,6 +281,11 @@ export const athletes: Athlete[] = [
       email: "jaylen.w@email.com",
       phone: "(602) 555-0578",
     },
+    highlights: [
+      { title: "Senior Season LB Highlights — 12 Tackles, 2 Sacks", youtubeId: "BI1pv6YGpP0" },
+      { title: "Defensive Player of the Week Reel", youtubeId: "mvDIHgQfL4o" },
+      { title: "Basketball Highlights — Power Forward", youtubeId: "rMjSBlJmmL0" },
+    ],
     profileImage: "/athletes/jaylen.jpg",
     photo: "/images/athlete-1.jpg",
     bannerGradient: "from-orange-900 via-amber-800 to-slate-900",
@@ -299,6 +323,9 @@ export const athletes: Athlete[] = [
       email: "sophia.m@email.com",
       phone: "(480) 555-0634",
     },
+    highlights: [
+      { title: "Freshman Soccer Season Highlights", youtubeId: "ye2lWVXBAEU" },
+    ],
     profileImage: "/athletes/sophia.jpg",
     photo: "/images/athlete-3.jpg",
     bannerGradient: "from-teal-900 via-cyan-800 to-slate-900",
@@ -343,6 +370,10 @@ export const athletes: Athlete[] = [
       email: "tyler.j@email.com",
       phone: "(480) 555-0789",
     },
+    highlights: [
+      { title: "Junior Season Shooting Guard Highlights", youtubeId: "IbxGejbqBWw" },
+      { title: "36-inch Vertical — Long Jump & Triple Jump", youtubeId: "AjzgaZ_U4oE" },
+    ],
     profileImage: "/athletes/tyler.jpg",
     photo: "/images/athlete-2.jpg",
     bannerGradient: "from-indigo-900 via-violet-800 to-slate-900",

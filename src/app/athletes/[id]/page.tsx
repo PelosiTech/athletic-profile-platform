@@ -254,26 +254,26 @@ export default function AthleteProfile() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-                  {[
-                    "Game Highlights Reel",
-                    "40 Yard Dash",
-                    "Combine Testing",
-                    "Season Highlights",
-                    "Practice Clips",
-                    "Team Celebration",
-                  ].map((title, i) => (
-                    <div
-                      key={i}
-                      className="group relative flex aspect-video items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-secondary to-secondary/50 cursor-pointer transition-all hover:ring-2 hover:ring-primary/50"
-                    >
-                      <Play className="h-8 w-8 text-muted-foreground transition-colors group-hover:text-primary" />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
-                        <p className="text-xs font-medium">{title}</p>
+                {athlete.highlights && athlete.highlights.length > 0 ? (
+                  <div className="space-y-4">
+                    {athlete.highlights.map((h, i) => (
+                      <div key={i}>
+                        <h4 className="mb-2 text-sm font-semibold">{h.title}</h4>
+                        <div className="relative aspect-video overflow-hidden rounded-lg">
+                          <iframe
+                            src={`https://www.youtube.com/embed/${h.youtubeId}`}
+                            title={h.title}
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="absolute inset-0 h-full w-full"
+                          />
+                        </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="text-sm text-muted-foreground">No highlights uploaded yet.</p>
+                )}
               </CardContent>
             </Card>
 
