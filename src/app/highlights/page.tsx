@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,8 +12,6 @@ import {
   ArrowRight,
   Volume2,
   VolumeX,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -22,9 +20,7 @@ const highlights = [
     id: 1,
     athlete: "Marcus Thompson",
     school: "Ridgeline Academy",
-    sport: "Football",
-    position: "Wide Receiver",
-    grade: "Junior",
+    sport: "Football · Wide Receiver",
     photo: "/images/athlete-1.jpg",
     slug: "marcus-thompson",
     title: "8 Catches, 142 Yards, 2 TDs vs Desert Vista",
@@ -38,9 +34,7 @@ const highlights = [
     id: 2,
     athlete: "Jasmine Carter",
     school: "Ridgeline Academy",
-    sport: "Basketball",
-    position: "Point Guard",
-    grade: "Senior",
+    sport: "Basketball · Point Guard",
     photo: "/images/athlete-2.jpg",
     slug: "jasmine-carter",
     title: "Triple-Double: 22 Pts, 11 Ast, 10 Reb",
@@ -54,9 +48,7 @@ const highlights = [
     id: 3,
     athlete: "Diego Ramirez",
     school: "Ridgeline Academy",
-    sport: "Track & Field",
-    position: "Sprinter",
-    grade: "Junior",
+    sport: "Track & Field · Sprinter",
     photo: "/images/athlete-3.jpg",
     slug: "diego-ramirez",
     title: "New PR: 10.89s in the 100m",
@@ -70,9 +62,7 @@ const highlights = [
     id: 4,
     athlete: "Alyssa Chen",
     school: "Ridgeline Academy",
-    sport: "Soccer",
-    position: "Midfielder",
-    grade: "Sophomore",
+    sport: "Soccer · Midfielder",
     photo: "/images/athlete-4.jpg",
     slug: "alyssa-chen",
     title: "2 Goals, 1 Assist — Regional Championship MVP",
@@ -86,9 +76,7 @@ const highlights = [
     id: 5,
     athlete: "Tyler Jackson",
     school: "Scottsdale Prep",
-    sport: "Football",
-    position: "Linebacker",
-    grade: "Senior",
+    sport: "Football · Linebacker",
     photo: "/images/athlete-2.jpg",
     slug: "tyler-jackson",
     title: "12 Tackles, 2 Sacks, Forced Fumble",
@@ -105,208 +93,152 @@ export default function HighlightsPage() {
   const [muted, setMuted] = useState(true);
   const active = highlights[activeIndex];
 
-  const scrollRow = useCallback((dir: "left" | "right") => {
-    const el = document.getElementById("hl-row");
-    if (el) el.scrollBy({ left: dir === "left" ? -300 : 300, behavior: "smooth" });
-  }, []);
-
   return (
-    <div className="min-h-screen bg-black">
-      {/* ===== HERO VIDEO — full viewport height ===== */}
-      <section className="relative w-full" style={{ height: "85vh", minHeight: 480 }}>
-        {/* YouTube iframe — autoplay muted */}
-        <div className="absolute inset-0">
+    <div className="min-h-screen bg-black pt-16">
+      {/* ===== HERO VIDEO ===== */}
+      <section className="relative w-full">
+        {/* Video container — 16:9 aspect ratio, nice and big */}
+        <div className="relative w-full" style={{ paddingBottom: "50%" }}>
           <iframe
             key={active.youtubeId + muted}
             src={`https://www.youtube.com/embed/${active.youtubeId}?autoplay=1&mute=${muted ? 1 : 0}&controls=0&modestbranding=1&rel=0&showinfo=0&loop=1&playlist=${active.youtubeId}`}
             title={active.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-            className="w-full h-full"
+            className="absolute inset-0 w-full h-full"
             style={{ border: 0 }}
           />
-        </div>
 
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-transparent pointer-events-none" />
+          {/* Bottom gradient only — keeps video visible */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none" />
 
-        {/* Content overlay — bottom left */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 lg:p-14 z-10">
-          <div className="max-w-3xl">
-            {/* Badge */}
-            <Badge className={`${active.badgeColor} mb-3 gap-1.5 px-3 py-1 text-xs font-bold`}>
-              <active.badgeIcon className="h-3 w-3" />
-              {active.badge}
-            </Badge>
-
-            {/* Title */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-3 drop-shadow-lg">
-              {active.title}
-            </h1>
-
-            {/* Athlete info */}
-            <div className="flex items-center gap-3 mb-4">
-              <img
-                src={active.photo}
-                alt={active.athlete}
-                className="h-10 w-10 rounded-full object-cover border-2 border-white/30"
-              />
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-white font-semibold">{active.athlete}</span>
-                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-                </div>
-                <span className="text-white/60 text-sm">
-                  {active.school} · {active.sport} · {active.position}
-                </span>
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div className="flex flex-wrap gap-2 mb-5">
-              {active.stats.map((s) => (
-                <span
-                  key={s}
-                  className="bg-white/10 backdrop-blur-sm text-white text-sm font-bold px-3 py-1 rounded-full border border-white/10"
-                >
-                  {s}
-                </span>
-              ))}
-            </div>
-
-            {/* Actions */}
-            <div className="flex items-center gap-3">
-              <Link href={`/athletes/${active.slug}`}>
-                <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2 font-semibold">
-                  View Profile <ArrowRight className="h-4 w-4" />
-                </Button>
-              </Link>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 gap-2"
-                onClick={() => setMuted(!muted)}
-              >
-                {muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
-                {muted ? "Unmute" : "Mute"}
-              </Button>
+          {/* Now Playing — top left */}
+          <div className="absolute top-4 left-4 sm:left-6 z-10">
+            <div className="flex items-center gap-2 text-white/70 text-xs sm:text-sm">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              Now Playing
             </div>
           </div>
-        </div>
 
-        {/* "Now Playing" top bar */}
-        <div className="absolute top-20 left-6 sm:left-10 z-10">
-          <div className="flex items-center gap-2 text-white/60 text-sm">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-            </span>
-            Now Playing — Weekly Highlights
+          {/* Mute button — top right */}
+          <div className="absolute top-4 right-4 sm:right-6 z-10">
+            <button
+              onClick={() => setMuted(!muted)}
+              className="flex items-center gap-1.5 bg-black/50 backdrop-blur-sm text-white text-xs font-medium px-3 py-1.5 rounded-full border border-white/10 hover:bg-black/70 transition-colors"
+            >
+              {muted ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5" />}
+              {muted ? "Unmute" : "Mute"}
+            </button>
+          </div>
+
+          {/* Athlete overlay — compact, bottom left */}
+          <div className="absolute bottom-0 left-0 right-0 px-4 pb-4 sm:px-6 sm:pb-5 z-10">
+            <div className="flex items-end justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <img
+                  src={active.photo}
+                  alt={active.athlete}
+                  className="h-9 w-9 sm:h-10 sm:w-10 rounded-full object-cover border-2 border-white/30"
+                />
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-white font-bold text-sm sm:text-base">{active.athlete}</span>
+                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+                    <Badge className={`${active.badgeColor} text-[10px] gap-1 px-1.5 py-0`}>
+                      <active.badgeIcon className="h-2.5 w-2.5" />
+                      {active.badge}
+                    </Badge>
+                  </div>
+                  <span className="text-white/50 text-xs">{active.school} · {active.sport}</span>
+                </div>
+              </div>
+              <div className="hidden sm:flex items-center gap-1.5">
+                {active.stats.map((s) => (
+                  <span key={s} className="bg-white/10 backdrop-blur-sm text-white text-xs font-bold px-2.5 py-1 rounded-full border border-white/10">
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== HIGHLIGHTS ROW — Netflix style ===== */}
-      <section className="relative bg-black px-6 sm:px-10 py-8">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
-            <Flame className="h-5 w-5 text-emerald-400" />
-            <h2 className="text-lg font-bold text-white">This Week&apos;s Highlights</h2>
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => scrollRow("left")}
-              className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              onClick={() => scrollRow("right")}
-              className="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
+      {/* ===== VERTICAL FEED ===== */}
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 py-6">
+        <div className="flex items-center gap-2 mb-5">
+          <Flame className="h-5 w-5 text-emerald-400" />
+          <h2 className="text-base font-bold text-white">This Week&apos;s Highlights</h2>
         </div>
 
-        <div
-          id="hl-row"
-          className="flex gap-3 overflow-x-auto pb-4 scrollbar-hide"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
+        <div className="space-y-3">
           {highlights.map((h, i) => (
             <button
               key={h.id}
               onClick={() => { setActiveIndex(i); setMuted(true); window.scrollTo({ top: 0, behavior: "smooth" }); }}
-              className={`flex-shrink-0 group relative rounded-xl overflow-hidden transition-all duration-300 ${
+              className={`w-full flex items-center gap-4 p-3 rounded-xl transition-all text-left ${
                 i === activeIndex
-                  ? "ring-2 ring-emerald-500 scale-105"
-                  : "ring-1 ring-white/10 hover:ring-white/30 hover:scale-[1.02]"
+                  ? "bg-emerald-500/10 ring-1 ring-emerald-500/30"
+                  : "bg-white/[0.03] hover:bg-white/[0.06] ring-1 ring-white/5 hover:ring-white/10"
               }`}
-              style={{ width: 280, height: 158 }}
             >
-              {/* Thumbnail — YouTube thumbnail */}
-              <img
-                src={`https://img.youtube.com/vi/${h.youtubeId}/mqdefault.jpg`}
-                alt={h.athlete}
-                className="w-full h-full object-cover"
-              />
-
-              {/* Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-
-              {/* Now playing indicator */}
-              {i === activeIndex && (
-                <div className="absolute top-2 left-2">
-                  <span className="flex items-center gap-1.5 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
+              {/* Thumbnail */}
+              <div className="relative flex-shrink-0 w-28 sm:w-36 rounded-lg overflow-hidden" style={{ aspectRatio: "16/9" }}>
+                <img
+                  src={`https://img.youtube.com/vi/${h.youtubeId}/mqdefault.jpg`}
+                  alt={h.athlete}
+                  className="w-full h-full object-cover"
+                />
+                {i === activeIndex && (
+                  <div className="absolute inset-0 bg-emerald-500/20 flex items-center justify-center">
+                    <span className="flex items-center gap-1 bg-emerald-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
+                      </span>
+                      PLAYING
                     </span>
-                    NOW PLAYING
-                  </span>
-                </div>
-              )}
-
-              {/* Badge */}
-              {i !== activeIndex && (
-                <div className="absolute top-2 left-2">
-                  <Badge className={`${h.badgeColor} text-[10px] gap-1 px-1.5 py-0.5`}>
-                    <h.badgeIcon className="h-2.5 w-2.5" />
-                    {h.badge}
-                  </Badge>
-                </div>
-              )}
+                  </div>
+                )}
+              </div>
 
               {/* Info */}
-              <div className="absolute bottom-0 left-0 right-0 p-3">
+              <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <img src={h.photo} alt="" className="h-6 w-6 rounded-full object-cover border border-white/30" />
-                  <span className="text-white text-sm font-semibold truncate">{h.athlete}</span>
+                  <img src={h.photo} alt="" className="h-6 w-6 rounded-full object-cover border border-white/20" />
+                  <span className={`text-sm font-semibold ${i === activeIndex ? "text-emerald-400" : "text-white"}`}>
+                    {h.athlete}
+                  </span>
                   <CheckCircle2 className="h-3 w-3 text-emerald-400 flex-shrink-0" />
                 </div>
-                <p className="text-white/70 text-xs truncate">{h.title}</p>
+                <p className="text-white/70 text-xs sm:text-sm truncate mb-1.5">{h.title}</p>
+                <div className="flex items-center gap-2">
+                  <Badge className={`${h.badgeColor} text-[9px] gap-0.5 px-1.5 py-0`}>
+                    <h.badgeIcon className="h-2 w-2" />
+                    {h.badge}
+                  </Badge>
+                  <span className="text-white/30 text-[10px]">{h.school}</span>
+                </div>
               </div>
+
+              {/* Arrow */}
+              <ArrowRight className={`h-4 w-4 flex-shrink-0 ${i === activeIndex ? "text-emerald-400" : "text-white/20"}`} />
             </button>
           ))}
         </div>
       </section>
 
       {/* ===== CTA ===== */}
-      <section className="bg-black px-6 sm:px-10 py-12">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="flex justify-center mb-4">
-            <div className="h-12 w-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
-              <Zap className="h-6 w-6 text-emerald-400" />
-            </div>
-          </div>
-          <h2 className="text-2xl font-bold text-white mb-2">Want to Be Featured?</h2>
-          <p className="text-white/50 mb-6">
-            Create your profile, upload your highlights, get seen by coaches.
-          </p>
+      <section className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+        <div className="text-center rounded-2xl bg-white/[0.03] border border-white/5 p-8">
+          <Zap className="mx-auto mb-3 h-7 w-7 text-emerald-400" />
+          <h2 className="text-xl font-bold text-white mb-2">Want to Be Featured?</h2>
+          <p className="text-white/40 text-sm mb-5">Create your profile, upload highlights, get seen by coaches.</p>
           <Link href="/onboard">
-            <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2">
+            <Button className="bg-emerald-500 hover:bg-emerald-600 text-white gap-2">
               Get Started Free <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
