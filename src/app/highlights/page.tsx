@@ -111,40 +111,39 @@ function HighlightCard({ h, isVisible }: { h: typeof highlights[0]; isVisible: b
       </div>
 
       {/* Info bar */}
-      <div className="px-4 sm:px-6 py-4">
-        <div className="flex items-start gap-3">
+      <div className="px-4 sm:px-6 py-5">
+        <div className="flex items-start gap-4">
           <Link href={`/athletes/${h.slug}`}>
             <img
               src={h.photo}
               alt={h.athlete}
-              className="h-11 w-11 rounded-full object-cover border-2 border-white/10 flex-shrink-0 hover:border-emerald-500/50 transition-colors"
+              className="h-16 w-16 sm:h-20 sm:w-20 rounded-full object-cover border-2 border-white/15 flex-shrink-0 hover:border-emerald-500/50 transition-colors"
             />
           </Link>
           <div className="flex-1 min-w-0">
-            <p className="text-white font-semibold text-[15px] leading-snug mb-1">{h.title}</p>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mb-1">
               <Link href={`/athletes/${h.slug}`} className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
-                <span className="text-white/60 text-sm">{h.athlete}</span>
-                <CheckCircle2 className="h-3 w-3 text-emerald-400" />
+                <span className="text-white font-bold text-base sm:text-lg">{h.athlete}</span>
+                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
               </Link>
-              <span className="text-white/20">·</span>
-              <span className="text-white/40 text-xs">{h.school}</span>
-            </div>
-            <div className="flex items-center gap-2 flex-wrap">
               <Badge className={`${h.badgeColor} text-[10px] gap-1 px-2 py-0.5`}>
                 <h.badgeIcon className="h-2.5 w-2.5" />
                 {h.badge}
               </Badge>
+            </div>
+            <p className="text-white/50 text-sm mb-2">{h.school} · {h.sport}</p>
+            <p className="text-white/80 font-medium text-sm sm:text-[15px] leading-snug mb-3">{h.title}</p>
+            <div className="flex items-center gap-2 flex-wrap">
               {h.stats.map((s) => (
-                <span key={s} className="text-emerald-400 text-xs font-bold bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+                <span key={s} className="text-emerald-400 text-sm font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
                   {s}
                 </span>
               ))}
               <Link
                 href={`/athletes/${h.slug}`}
-                className="text-xs text-white/30 hover:text-emerald-400 transition-colors ml-auto flex items-center gap-0.5"
+                className="text-xs text-white/30 hover:text-emerald-400 transition-colors ml-auto flex items-center gap-1"
               >
-                Full Profile <ArrowRight className="h-3 w-3" />
+                Full Profile <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </div>
           </div>
