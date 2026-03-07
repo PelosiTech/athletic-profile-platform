@@ -88,7 +88,7 @@ const highlights = [
 
 function HighlightCard({ h, isVisible }: { h: typeof highlights[0]; isVisible: boolean }) {
   return (
-    <div className="snap-start">
+    <div>
       {/* Video */}
       <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
         {isVisible ? (
@@ -175,7 +175,7 @@ export default function HighlightsPage() {
         });
         setVisibleIds(next);
       },
-      { threshold: 0.4 }
+      { threshold: 0.15 }
     );
 
     observerRefs.current.forEach((el) => observer.observe(el));
@@ -199,7 +199,7 @@ export default function HighlightsPage() {
       </div>
 
       {/* Feed */}
-      <div className="max-w-3xl mx-auto snap-y snap-mandatory">
+      <div className="max-w-3xl mx-auto">
         {highlights.map((h) => (
           <div
             key={h.id}
